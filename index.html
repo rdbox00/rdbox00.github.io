@@ -1,314 +1,83 @@
-<!DOCTYPE HTML>
-<!--
-	Theory by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
-<html>
-	<head>
-		<title> Científicos para el futuro - Scientists for Future Spain </title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending somewhere in the web</title>
+    <link rel="icon" href="favicon.ico" sizes="32x32">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">S4F-España</a>
-					<nav id="nav">
-						<a href="index.html">Inicio</a>
-						<!--<a href="generic.html">Hechos</a>
-						<a href="elements.html">Mas información</a>-->
-						<a href="#zero">Noticias</a>
-						<a href="#one">S4F</a>
-						<a href="#two">Hechos</a>
-						<a href="#three">Mas información</a>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
-			</header>
+    <!-- Background Animation Layer -->
+    <div class="ambient-background"></div>
 
-		<!-- Banner -->
-			<section id="banner">
-				<h1>Científicos para el futuro</h1>
-                        <!--<p>Una iniciativa de científicos que se preocupan por el futuro.</p>-->
-                <p>
-                2015, 2016, 2017 y 2018 fueron los cuatro años más cálidos 
-                de la historia mundial desde el comienzo de los registros meteorológicos.
-                <br/>
-                En el contexto actual y la aparente crisis climática, la ciencia es un factor clave 
-                para apoyar y promover la requerida transición socio-económica hacia una sociedad descarbonizada.
-                </p>
-			</section>
+    <header>
+        <h1>Trend <span> Tracker</span></h1>
+        <p>Streaming insights from various web pages such as HackerNews posts and Github repositories</p>
+        
+        <!-- Controls Container -->
+        <div class="controls-container">
+            <!-- Date Filter -->
+            <div class="date-wrapper">
+                <label for="date-filter">Retrieval Date:</label>
+                <input type="date" id="date-filter">
+                <button id="clear-date-btn" title="Clear Date Filter (Show All)">↺</button>
+            </div>
 
-		<!-- Zero -->
-			<section id="zero" class="wrapper special">
-				<div class="inner">
-					<header class="align-center">
-					    <h2>Noticias</h2>
-					 <!--	<p> - </p> --> 
-					</header>
-					<div class="flex flex-2">
-						<article>
-		<!--
-							<div class="image fit">
-								<img src="images/24A.png" alt="Pic 01" />
-							</div>
-		-->
-							<header>
-								<h3>25S: Día Global de Acciones por el Clima</h3>
-							</header>
-							<p> 
-							El Viernes 25 de septiembre es el Día Global de Acciones por el Clima.
-							<br/> 
-							Juventud por el Clima y Fridays for Future convocan protestas climáticas y 
-							lideren unas movilizaciones en la calle el próximo 25 de septiembre con las 
-							medidas adecuadas de seguridad higiénicas. 
-							</p>
-							<footer>
-								<a href="https://juventudxclima.es/" class="button special"> Mas información </a>
-							</footer>
-						</article>
-		<!--
-							<header>
-								<h3>24A: Acción Global por el Clima</h3>
-							</header>
-							<p> 
-							La alianza por el clima organiza una manifestación virtual el día 24 de Abril.
-							<br/> 
-							Para hacer frente a las consecuencias del calentamiento global, 
-							es imprescindible reducir ciertos consumos, adoptar nuevas pautas de transporte 
-							y acelerar la transición energética desde los combustibles fósiles a un modelo totalmente renovable, eficiente, sin emisiones contaminantes y justo. No será una acción global si faltas tú! 
-							<br/> 
-							Súmate a #ACCIÓNGLOBALPORELCLIMA24A #CLIMASTRIKEONLINE
-							<a href="https://forms.gle/A24yB9mjhqkWv9e36"> apoyando el manifiesto </a>
-							</p>
-							<footer>
-								<a href="https://drive.google.com/open?id=1qcgeaocUBEJosZOUWY5vDcVB9JocKqEL" class="button special">  El manifiesto de 24A </a>
-							</footer>
-						</article>
-		-->
-						<article>
-		<!--
-							<div class="image fit">
-								<img src="images/CO2.png" alt="Pic 02" />
-							</div>
-		-->
-							<header>
-								<h3>Desde S4F al Planeta: ¡Hola!</h3>
-							</header>
-                            <br/>
-							<p> Hola el planeta, nuestra tierra cada día mas caliente... 
-							Somos los científicos para el futuro (S4F), un grupo regional en 
-							España de la una iniciativa que nació en Alemania. Síguenos en
-							<a href="https://twitter.com/espanas4f" class="icon fa-twitter"><span class="label">Twitter</span></a> <a href="https://twitter.com/espanas4f"> @EspanaS4f </a>
-							</p>
-							<footer>
-								<a href="#one" class="button special"> Mas información </a>
-							</footer>
-						</article>
-					</div>
-				</div>
-			</section>
+            <!-- Tag Filters -->
+            <div id="filter-container">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+    </header>
 
-		<!-- One -->
-			<section id="one" class="wrapper">
-				<div class="inner">
-				    <header class="align-center">
-					<h2>S4F España</h2>
-				    </header>
-					<div class="flex flex-3">
-						<article>
-							<header>
-								<h3> La iniciativa </h3>
-							</header>
-							<p> 
-                                Los científicos para el futuro es una iniciativa nacida en Alemania que se ha convertido ya en un movimiento muy importante, 
-                                con más de 26.800 firmantes en Alemania, Suiza y Austria. También hay muchos subgrupos regionales muy activos, 
-                                proporcionado información, apoyo y formación a los activistas de FFF (Fridays for future / huelgas por el clima), 
-                                pero también a cualquier otra institución o iniciativa que lo pide. La idea es apoyar con objetividad y evidencias científicas 
-                                y así subrayar la gravedad de la situación y dar credibilidad a los jóvenes.
-                                </p>
-							<footer>
-                                <!--
-								<a href="#" class="button special">More</a>
-                                -->	
-                            </footer>
-						</article>
-						<article>
-							<header>
-								<h3> El manifiesto </h3>
-							</header>
-							<p>
-                            Hacemos una llamada a todos los/las científicos de la península para que, 
-                            si están de acuerdo con las preocupaciones de la gente que protesta por el clima y su futuro, 
-                            y si ven insuficiente las medidas políticas que se están tomando para cumplir con el acuerdo de Paris, 
-                            firmen la declaración de Scientists for Future / Científicos para el Futuro. 
-                            Así damos visibilidad e importancia al tema también desde el mundo de la ciencia:
-                                </p>
-							<footer>
-								<a href="https://www.peticion.es/declaracion_scientists4future_espana" class="button special">Firmar</a>
-							</footer>
-						</article>
-						<article>
-							<header>
-                                <!--<h3> Hecho <br /> 3 </h3> -->
-								<h3> El grupo de correo </h3>
-							</header>
-							<p> 
-                            Quieres participar más activamente y/o estar informado de lo que está pasando en las demás regiones?
-                            Suscribete al <a href="https://groups.io/g/s4f-spain"> grupo de correo </a>. También puedes apuntarte al <a href="https://groups.io/g/newsletter-s4f-es"> newsletter  </a>.
-                            </p>
-							<footer>
-								<!-- <a href="https://groups.io/g/s4f-spain" class="button special"> Contáctanos </a> --> 
-								<a href="mailto:s4f-espana@outlook.com" class="button special"> Contáctanos </a>
-							</footer>
-						</article>
-					</div>
-				</div>
-			</section>
+    <main>
+        <div id="card-grid" class="bento-grid">
+            <!-- Cards injected by JS -->
+        </div>
+        
+        <!-- Empty State Message -->
+        <div id="no-results" style="display:none;">
+            <p>No updates found for this date.</p>
+            <button onclick="document.getElementById('clear-date-btn').click()" class="reset-link">View all time</button>
+        </div>
 
-		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
-				<div class="inner">
-					<header>
-						<h2>Algunos hechos</h2>
-						<p>Información compilada por Dr. Christine Rüth, Dr. Gregor Hagedorn, Prof. Dr. Helga Kromp-Kolb</p>
-					</header>
-					<div class="flex flex-4">
-						<div class="box person">
-							<div class="image round">
-								<img src="images/warming_map_es.png" alt="Person 1" />
-							</div>
-							<h3>Hecho 1</h3>
-							<p>En todo el mundo, la temperatura media
-                                 ya ha aumentado alrededor de 1 °C 
-                                (en relación con los años 1850-1900). 
+        <div id="scroll-sentinel"></div>
+    </main>
 
-                                Alrededor de la mitad del aumento 
-                                se ha producido en los últimos 30 años.</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/warming_map_es.png" alt="Person 2" />
-							</div>
-							<h3>Hecho 2</h3>
-							<p>A nivel mundial, 2015, 2016, 2017 y 2018 
-                                fueron los años más calurosos desde 
-                                el comienzo de los registros meteorológicos.</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/warming_map_es.png" alt="Person 3" />
-							</div>
-							<h3>Hecho 3</h3>
-							<p>El aumento de la temperatura 
-                                se debe casi en su totalidad a las emisiones 
-                                de gases de efecto invernadero causados 
-                                por los seres humanos.</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/warming_map_es.png" alt="Person 4" />
-							</div>
-							<h3>Hecho 4</h3>
-							<p>
-                            Ya con el calentamiento actual nos enfrentamos
-                            en muchas regiones con eventos climáticos extremos
-                            más frecuentes y fuertes y con sus consecuencias
-                            como olas de calor, sequías, incendios forestales y fuertes precipitaciones.
-                            </p>
-						</div>
-					</div>
-				</div>
-			</section>
+    <footer>
+        <div class="footer-content">
+            <!-- <p>&copy; 2026 Knowledge Stream.</p> -->
+            <p><a href="https://github.com/emreg00/n8n-local">emreg00/TrendTracker</a> - v1.0 - 2026 - powered by:</p>
+            <div class="footer-links">
+                <a href="https://n8n.io/">n8n</a>
+                <a href="https://ollama.com/">Ollama</a>
+                <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">GitHub pages</a>
+                
+            </div>
+        </div>
+    </footer>
 
-		<!-- Three -->
-			<section id="three" class="wrapper special">
-				<div class="inner">
-					<header class="align-center">
-						<h2>Mas información</h2>
-						<p>Otros hechos </p>
-					</header>
-					<div class="flex flex-2">
-						<article>
-							<!--<div class="image fit">
-								<img src="images/pic01.jpg" alt="Pic 01" />
-							</div>
-                            -->
-                            <div class="image fit">
-							<div class="image round">
-								<img src="images/s4f.jpg" alt="Person 4" />
-							</div>
-							</div>
+    <!-- Card Template -->
+    <template id="card-template">
+        <article class="card">
+            <div class="card-header">
+                <span class="card-date"></span>
+                <a href="#" target="_blank" class="card-link">Visit &nearr;</a>
+            </div>
+            <h2 class="card-url"></h2>
+            <div class="content-wrapper">
+                <ul class="card-summary"></ul>
+            </div>
+            <div class="card-tags"></div>
+        </article>
+    </template>
 
-                            <!--
-							<header>
-								<h3>Praesent placerat magna</h3>
-							</header>
-							<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-                            -->
-						</article>
-						<article>
-                                <!--
-							<div class="image fit">
-								<img src="images/pic02.jpg" alt="Pic 02" />
-							</div>
-                                -->
-							<header>
-								<h3>Conjunto de hechos</h3>
-							</header>
-                            <br/>
-							<p>Documento de PDF con el conjunto de hechos illustrados.</p>
-							<footer>
-								<a href="images/s4f_hechos.pdf" class="button special">Descargar</a>
-							</footer>
-                            <br/>
-                            <br/>
-							<p>Documento de PDF con el conjunto de hechos en formato A3.</p>
-							<footer>
-								<a href="images/s4f_hechos_a3.pdf" class="button special">Descargar</a>
-							</footer>
-
-						</article>
-					</div>
-				</div>
-			</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="flex">
-						<div class="copyright">
-                                <!--&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.-->
-                                Material: 
-                                <a href="https://www.scientists4future.org/">Scientists for Future (CC BY-SA 4.0)</a>. 
-                                Diseño web: <a href="https://templated.co">TEMPLATED</a>. Imagenes: <a href="https://commons.wikimedia.org/">Wikimedia</a> and <a href="https://unsplash.com">Unsplash</a>.
-						</div>
-						<ul class="icons">
-							<li><a href="https://twitter.com/espanas4f" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <!--
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-							<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-							<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
-                        -->
-						</ul>
-					</div>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>
-
