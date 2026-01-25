@@ -1,6 +1,6 @@
 // CONFIGURATION
 //const AVAILABLE_TAGS = ['AI', 'Health', 'Finance', 'Science', 'IT'];
-const AVAILABLE_TAGS = ["Frontend/UI", "Backend/DevOps", "Science", "AI", "Health", "IT", "Finance", "Career", "Other"]
+const AVAILABLE_TAGS = ["Frontend-UI", "Backend-DevOps", "Science", "AI", "Health", "IT", "Finance", "Career", "Other"]
 const CARDS_PER_PAGE = 9; 
 
 // State Variables
@@ -9,6 +9,9 @@ let filteredCards = [];
 let displayedCount = 0; 
 let activeTag = 'All';
 let activeDate = null; // null = all time, string = YYYY-MM-DD
+
+// Observer Variable (Global so we can stop/start it)
+let scrollObserver = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
@@ -30,7 +33,7 @@ async function init() {
     
     // Initial Filter Apply
     applyFilters();
-    setupInfiniteScroll();
+    //setupInfiniteScroll();
 }
 
 // 1. DATE CONTROLS SETUP
@@ -62,24 +65,43 @@ function setupDateControls() {
 
 // 2. FILTERING LOGIC
 function applyFilters() {
+    // RESET EVERYTHING
     displayedCount = 0;
     const grid = document.getElementById('card-grid');
     const noResults = document.getElementById('no-results');
+    const sentinel = document.getElementById('scroll-sentinel');
+    
     grid.innerHTML = ''; 
+    
+    // Re-enable sentinel in case it was hidden previously
+    sentinel.style.display = 'block';
 
-    // Filter Logic: Intersection of Tag AND Date
+    // Filter Logic
     filteredCards = allCardsData.filter(card => {
         const matchesTag = (activeTag === 'All') || card.tags.includes(activeTag);
         const matchesDate = !activeDate || (card.date === activeDate);
         return matchesTag && matchesDate;
     });
 
+    // Sort: Newest Date first, then URL alphabetical (consistency)
+    filteredCards.sort((a,b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB - dateA || a.url.localeCompare(b.url);
+    });
+
     // Handle Empty State
     if(filteredCards.length === 0) {
         noResults.style.display = 'block';
+        sentinel.style.display = 'none'; // Hide loader if no results
     } else {
         noResults.style.display = 'none';
+        
+        // Initial Load
         loadMoreCards();
+        
+        // Restart Observer
+        setupInfiniteScroll();
     }
 }
 
@@ -184,17 +206,16 @@ function removeDuplicates(data) {
 function loadMoreCards() {
     const grid = document.getElementById('card-grid');
     const template = document.getElementById('card-template');
-    
-    // Sort Newest First (Secondary sort by URL to be deterministic)
-    filteredCards.sort((a,b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateB - dateA || a.url.localeCompare(b.url);
-    });
+    const sentinel = document.getElementById('scroll-sentinel');
 
+    // Check if we have reached the end
+    if (displayedCount >= filteredCards.length) {
+        finishInfiniteScroll();
+        return;
+    }
+
+    // Get next batch
     const nextBatch = filteredCards.slice(displayedCount, displayedCount + CARDS_PER_PAGE);
-    
-    if(nextBatch.length === 0) return;
 
     nextBatch.forEach(data => {
         const clone = template.content.cloneNode(true);
@@ -222,15 +243,27 @@ function loadMoreCards() {
     });
 
     displayedCount += nextBatch.length;
+
+    // Double Check: If we just loaded the last items, hide the sentinel immediately
+    if (displayedCount >= filteredCards.length) {
+        finishInfiniteScroll();
+    }
 }
 
-// 6. INFINITE SCROLL
+// 6. INFINITE SCROLL LOGIC
 function setupInfiniteScroll() {
     const sentinel = document.getElementById('scroll-sentinel');
-    const observer = new IntersectionObserver(entries => {
+    
+    // Disconnect existing observer if it exists to avoid duplicates
+    if (scrollObserver) {
+        scrollObserver.disconnect();
+    }
+
+    scrollObserver = new IntersectionObserver(entries => {
         if(entries[0].isIntersecting) {
             loadMoreCards();
         }
     }, { rootMargin: '200px' });
-    observer.observe(sentinel);
+
+    scrollObserver.observe(sentinel);
 }
